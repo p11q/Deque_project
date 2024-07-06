@@ -1,0 +1,9 @@
+libdir=/home/user/Projects/C++/Deque_tests/Test/googletest-1.14.0/build/OUT/lib
+includedir=/home/user/Projects/C++/Deque_tests/Test/googletest-1.14.0/build/OUT/include
+
+Name: gtest
+Description: GoogleTest (without main() function)
+Version: 1.14.0
+URL: https://github.com/google/googletest
+Libs: -L${libdir} -lgtest 
+Cflags: -I${includedir} -DGTEST_HAS_PTHREAD=1

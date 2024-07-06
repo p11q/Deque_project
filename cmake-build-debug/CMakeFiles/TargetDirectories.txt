@@ -1,0 +1,6 @@
+/home/user/Projects/C++/Deque_tests/cmake-build-debug/CMakeFiles/Deque_tests.dir
+/home/user/Projects/C++/Deque_tests/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/user/Projects/C++/Deque_tests/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/user/Projects/C++/Deque_tests/cmake-build-debug/Test/CMakeFiles/g_tests.dir
+/home/user/Projects/C++/Deque_tests/cmake-build-debug/Test/CMakeFiles/edit_cache.dir
+/home/user/Projects/C++/Deque_tests/cmake-build-debug/Test/CMakeFiles/rebuild_cache.dir
