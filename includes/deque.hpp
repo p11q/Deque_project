@@ -1,12 +1,12 @@
 #ifndef DEQUE_HPP
 #define DEQUE_HPP
-
-//  как затереть m_val ?
+template<typename T>
+class Deque;
 
 template<typename T>
-
 class Node {
-public:
+    friend class Deque<T>;
+private:
     T m_val;
     Node* m_next;
     Node* m_prev;
@@ -20,14 +20,12 @@ public:
 
     Node(T m_val) = delete;
 
-    ~Node() {
-        // ???
-    }
+    ~Node() = default;
+
 };
 
 template<typename T>
-
-class Deque : public Node<T>{
+class Deque {
 private:
     Node<T>* m_head;
     Node<T>* m_tail;
@@ -42,14 +40,14 @@ public:
     explicit Deque(size_t size) :
         m_size{ size } {
 
-        auto* head_val = new Node_t{0, nullptr, nullptr};
+        auto* head_val = new Node_t{T{}, nullptr, nullptr};
 
         m_head = head_val;
 
         Node_t* it = m_head;
         for (int i = 0; i < m_size; i++) {
 
-            auto* tmp = new Node_t{0, nullptr,nullptr};
+            auto* tmp = new Node_t{T{}, nullptr,nullptr};
 
             it->m_next = tmp;
             tmp->m_prev = it;
@@ -81,7 +79,7 @@ public:
         return m_size;
     }
 
-    Deque& operator=(Deque<T> dq_1) {
+    Deque& operator=(const Deque<T> dq_1) {
         // Выравнивание size
         if (dq_1.m_head == nullptr) {
             return *this;
@@ -114,8 +112,8 @@ public:
         }
         return *this;
     }
-
-    Node_t* at(int index) const {
+// Надо подумать
+    Node_t* operator[] (const int index) {
         if (m_head == nullptr || index < 0 || index >= this->m_size) return nullptr;
         int i = 0;
         Node_t* tmp = m_head;
@@ -125,9 +123,8 @@ public:
         return tmp;
     }
 
-    // operator[]
-    Node_t* operator[] (const int index) {
-        return at(index);
+    Node_t* at(int index) const {
+        return this[index];
     }
 
     void push_back(int value) {
@@ -169,16 +166,16 @@ public:
     }
 
 
-    /*
+
     ~Deque() {
        auto* it = new Node_t{};
-
-        for (it = this->m_head; it->m_next != this->m_tail; it = this->m_head) {
-            this->m_head = this->m_head->m_next;
-            it->~Node();
+        it = m_head->m_next;
+        while (it->m_next != nullptr) {
+            it->m_prev->~Node();
+            it = it->m_next;
         }
         it->~Node();
-    }*/
+    }
 };
 
 
